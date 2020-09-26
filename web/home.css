@@ -1,0 +1,143 @@
+body {
+    font-family: Verdana, Arial, sans-serif;
+    color: lightcyan;
+    text-align: center;
+    background-color: #231651;
+    margin: 0;
+}
+
+nav {
+    top: 0;
+    position: sticky;
+    position: -webkit-sticky;
+}
+
+nav a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav hr {
+    margin: 0 0 8px 0;
+}
+
+ul {
+    list-style-type: none;
+    background-color: #174c6b;
+    color: #4dccbd;
+    padding: 8px 0 8px;
+    margin: 0;
+}
+
+ul li {
+    padding: 8px 16px;
+    display: inline;
+}
+
+
+header hr {
+    margin: 0;
+}
+
+h3 {
+    color: #ff8484;
+}
+
+p {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    font-weight: lighter;
+}
+table, tr, th, td {
+    border: 1px solid #4dccbd;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 8px;
+}
+
+td {
+    padding: 4px;
+}
+
+
+section {
+    background-color: #174c6b;
+    margin: 30px 0 30px;
+    padding: 8px;
+}
+
+form {
+    color: #d6fff6;
+    /*text-align:left;*/
+}
+
+select, option, input, textarea {
+    background-color: #231651;
+    color: #d6fff6;
+    border: 2px solid #4dccbd;
+    border-radius: 5px;
+    margin: 8px 0 8px;
+}
+
+footer {
+    font-size: 0.5em;
+}
+
+li a {
+    height: 20px;
+}
+
+a:link {
+    color: #d6fff6;
+}
+
+a:visited {
+    color: #d6fff6;
+}
+
+a:hover {
+    color: #ff8484;
+}
+
+a:active {
+    color: #d6fff6;
+}
+
+.icon {
+    height: 16px;
+    width: 16px;
+}
+
+.button {
+    padding: 8px;
+    width: 150px;
+}
+
+#img-link {
+    filter: invert(100%);
+}
+
+#form-box {
+    margin-right: auto;
+    margin-left: auto;
+    /*width: 600px;*/
+}
+
+#submit {
+    margin-right: 8px;
+
+}
+
+#radio, #checkbox {
+    margin: 16px 0 16px;
+}
+
+#other {
+    margin-top: 16px;
+}
