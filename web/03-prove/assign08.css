@@ -1,0 +1,32 @@
+form p {
+    display:inline;
+}
+#address_label {
+    vertical-align:top;
+    margin-top:16px;
+}
+.feedback {
+    visibility:hidden;
+    color:red;
+    font-size:12px;
+}
+h2 {
+    font-size: 1.3em;
+    color:#ff8484;
+}
+#cart-icon {
+    background-color:#ff8484;
+}
+button {
+    color:#d6fff6;
+    border:2px solid #4dccbd;
+    border-radius:5px;
+    margin:8px 0 8px;
+    padding:2px;
+    background-color:#153653;
+    /*color:#174c6b;*/
+    font-weight:bold;
+}
+textarea {
+    margin-bottom: 0;
+}
