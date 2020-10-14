@@ -42,6 +42,7 @@ function getBankAccountsForOne($db, $projection)
     } catch (Exception $e) {
         echo $e->getMessage() . '<br/>' . $e->getTraceAsString();
     }
+    return $entries;
 }
 
 function getProjectionList($db)
@@ -80,8 +81,12 @@ $projection = htmlspecialchars($_POST['projection-name']);
 $entries = getEntriesForOne($db, $projection);
 printSqlResults($entries);
 
-getBankAccountsForOne($projection);
-printSqlResults();
+$bankAccounts = getBankAccountsForOne($db, $projection);
+printSqlResults($bankAccounts);
+
+$projectionList = getProjectionList($db);
+printSqlResults($projectionList);
+
 
 //print_r($entries);
 
