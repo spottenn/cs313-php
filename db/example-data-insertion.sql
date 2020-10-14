@@ -75,6 +75,52 @@ INSERT INTO incomes (projection_id, name, amount_cents, start_date, end_date, re
 );
 
 INSERT INTO expenses (projection_id, name, amount_cents, start_date, end_date, repeats, repeat_frequency) VALUES (
+    (SELECT id FROM projections WHERE name = 'Jane''s projection') ,
+    'Jane''s rent',
+    400,
+    '2020-10-26',
+    NULL,
+    'months',
+    1
+);
+INSERT INTO expenses (projection_id, name, amount_cents, start_date, end_date, repeats, repeat_frequency) VALUES (
+    (SELECT id FROM projections WHERE name = 'Jane''s projection') ,
+    'utilities',
+    100,
+    '2020-10-27',
+    NULL,
+    'months',
+    1
+);
+INSERT INTO expenses (projection_id, name, amount_cents, start_date, end_date, repeats, repeat_frequency) VALUES (
+    (SELECT id FROM projections WHERE name = 'Jane''s projection') ,
+    'netflix',
+    10,
+    '2020-10-28',
+    NULL,
+    'months',
+    1
+);
+INSERT INTO expenses (projection_id, name, amount_cents, start_date, end_date, repeats, repeat_frequency) VALUES (
+    (SELECT id FROM projections WHERE name = 'Jane''s projection') ,
+    'groceries',
+    200,
+    '2020-10-29',
+    NULL,
+    'months',
+    1
+);
+INSERT INTO expenses (projection_id, name, amount_cents, start_date, end_date, repeats, repeat_frequency) VALUES (
+    (SELECT id FROM projections WHERE name = 'Jane''s projection') ,
+    'fun',
+    50,
+    '2020-10-30',
+    NULL,
+    'months',
+    1
+);
+
+INSERT INTO expenses (projection_id, name, amount_cents, start_date, end_date, repeats, repeat_frequency) VALUES (
     (SELECT id FROM projections WHERE name = 'John''s projection') ,
     'John''s rent',
     400,
