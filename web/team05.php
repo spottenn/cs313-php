@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Financial Projector</title>
-    <link rel="stylesheet" type="text/css" href="assign07.css">
 </head>
 <body>
 <h1>Scripture Resources</h1>
