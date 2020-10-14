@@ -1,7 +1,66 @@
+INSERT INTO projections (name, created) VALUES ('projection', current_timestamp);
+INSERT INTO bank_accounts (projection_id, name, type, amount_cents) VALUES (
+                                                                               (SELECT id FROM projections WHERE name = 'projection') ,
+                                                                               'my checking',
+                                                                               'checking',
+                                                                               100000
+                                                                           );
+INSERT INTO proj_entries (projection_id, entry_type, name, amount_cents, start_date, end_date, repeats, repeat_frequency) VALUES (
+                                                                                                                                     (SELECT id FROM projections WHERE name = 'projection') ,
+                                                                                                                                     'income',
+                                                                                                                                     'job',
+                                                                                                                                     1000,
+                                                                                                                                     '2020-10-25',
+                                                                                                                                     NULL,
+                                                                                                                                     'months',
+                                                                                                                                     1
+                                                                                                                                 );
+INSERT INTO proj_entries (projection_id, entry_type, name, amount_cents, start_date, end_date, repeats, repeat_frequency) VALUES (
+                                                                                                                                     (SELECT id FROM projections WHERE name = 'projection') ,
+                                                                                                                                     'income',
+                                                                                                                                     'self employment',
+                                                                                                                                     2000,
+                                                                                                                                     '2020-10-25',
+                                                                                                                                     NULL,
+                                                                                                                                     'months',
+                                                                                                                                     1
+                                                                                                                                 );
+INSERT INTO proj_entries (projection_id, entry_type, name, amount_cents, start_date, end_date, repeats, repeat_frequency) VALUES (
+                                                                                                                                     (SELECT id FROM projections WHERE name = 'projection') ,
+                                                                                                                                     'income',
+                                                                                                                                     'mom',
+                                                                                                                                     500,
+                                                                                                                                     '2020-10-25',
+                                                                                                                                     NULL,
+                                                                                                                                     'months',
+                                                                                                                                     1
+                                                                                                                                 );
+INSERT INTO proj_entries (projection_id, entry_type, name, amount_cents, start_date, end_date, repeats, repeat_frequency) VALUES (
+                                                                                                                                     (SELECT id FROM projections WHERE name = 'projection') ,
+                                                                                                                                     'income',
+                                                                                                                                     'job',
+                                                                                                                                     1500,
+                                                                                                                                     '2020-10-25',
+                                                                                                                                     NULL,
+                                                                                                                                     'months',
+                                                                                                                                     1
+                                                                                                                                 );
+INSERT INTO proj_entries (projection_id, entry_type, name, amount_cents, start_date, end_date, repeats, repeat_frequency) VALUES (
+                                                                                                                                     (SELECT id FROM projections WHERE name = 'projection') ,
+                                                                                                                                     'income',
+                                                                                                                                     'husband''s job',
+                                                                                                                                     1000,
+                                                                                                                                     '2020-10-25',
+                                                                                                                                     NULL,
+                                                                                                                                     'months',
+                                                                                                                                     1
+                                                                                                                                 );
+
 INSERT INTO projections (name, created) VALUES ('Jane''s projection', current_timestamp);
 INSERT INTO projections (name, created, length) VALUES ('John''s projection', current_timestamp, '6 months');
 INSERT INTO projections (name, created, length) VALUES ('Jack''s projection', current_timestamp, '9 months');
 INSERT INTO projections (name, created) VALUES ('Jade''s projection', current_timestamp);
+
 
 INSERT INTO bank_accounts (projection_id, name, type, amount_cents) VALUES (
     (SELECT id FROM projections WHERE name = 'Jane''s projection') ,
