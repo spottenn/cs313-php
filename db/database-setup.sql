@@ -1,12 +1,12 @@
 CREATE TABLE projections (
     id SERIAL NOT NULL PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
-    created timestamp with time zone NOT NULL,
+    created timestamp NOT NULL,
     length interval not null default '1 year'
 );
 
 CREATE TYPE entry_type AS ENUM ('expense', 'income');
-CREATE TYPE repeat_type AS ENUM ('once', 'daily', 'monthly', 'yearly');
+CREATE TYPE repeat_type AS ENUM ('once', 'days', 'weeks', 'months', 'years');
 
 CREATE TABLE expenses (
     id SERIAL NOT NULL PRIMARY KEY,
