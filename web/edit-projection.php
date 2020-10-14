@@ -10,7 +10,7 @@ $projection = htmlspecialchars($_POST['projection-name']);
 //    ORDER BY entry_type DESC");
 
 $statement = $db->prepare("SELECT * FROM proj_entries");
-$statement->execute(array(':projection' => $projection));
+$statement->execute();
 $entries = $statement->fetchAll(PDO:: FETCH_ASSOC);
 
 print_r($entries);
