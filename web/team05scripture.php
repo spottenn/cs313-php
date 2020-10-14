@@ -6,10 +6,6 @@
 </head>
 <body>
 <h1>Scripture </h1>
-<form action="team05b.php">
-    <input type="text" name="book">
-    <input type="submit">
-</form>
 <?php
 include "connect-db.php";
 $book = htmlspecialchars($_GET["book"]);
@@ -18,10 +14,12 @@ $verse = htmlspecialchars($_GET["verse"]);
 
 $queryString = "SELECT * FROM scriptures WHERE book = '";
 $queryString .= $book;
-$queryString .= "' AND chapter = '";
+$queryString .= "' AND chapter = ";
 $queryString .= $chapter;
-$queryString .= "' AND verse = '";
-$queryString .= verse . "'";
+$queryString .= " AND verse = ";
+$queryString .= verse . "";
+
+echo $queryString;
 
 
 foreach ($db->query($queryString) as $row)
