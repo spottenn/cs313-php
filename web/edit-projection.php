@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Financial Projector</title>
-    <link rel="stylesheet" type="text/css" href="assign04.css">
-    <link rel="stylesheet" type="text/css" href="assign08.css">
+    <link rel="stylesheet" type="text/css" href="./03-prove/assign04.css">
+    <link rel="stylesheet" type="text/css" href="./03-prove/assign08.css">
 </head>
 <body>
 
