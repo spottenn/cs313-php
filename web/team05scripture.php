@@ -19,9 +19,6 @@ $queryString .= $chapter;
 $queryString .= " AND verse = ";
 $queryString .= verse . "";
 
-echo $queryString;
-
-
 foreach ($db->query($queryString) as $row)
 {
     echo "<p><strong>";
