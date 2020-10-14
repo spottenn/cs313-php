@@ -8,7 +8,7 @@ $projection = pg_escape_literal($projection);
 $statement = $db->prepare(
     "SELECT * FROM proj_entries WHERE projection_id = (SELECT id FROM projections WHERE name = $projection)
     ORDER BY entry_type DESC");
-$statement->execute(array(':projection' => $projection));
+$statement->execute();
 $entries = $statement->fetchAll(PDO:: FETCH_ASSOC);
 
 print_r($entries);
