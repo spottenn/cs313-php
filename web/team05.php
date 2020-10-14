@@ -11,11 +11,14 @@ include "connect-db.php";
 
 foreach ($db->query('SELECT * FROM scriptures') as $row)
 {
-    echo "<p><strong>";
+    $queryArray = Array (book => $row['book'], chapter => $row['chapter'], verse => $row['verse']);
+    echo "<a href='team05scripture.php?";
+    echo http_build_query($queryArray);
+    echo "'><strong>";
     echo $row['book'] . " " . $row['chapter'] .":" . $row['verse'];
-    echo '</strong> - "';
-    echo $row['content'];
-    echo '"</p>';
+    echo '</strong>';// - "';
+//    echo $row['content'];
+    echo '"</a>';
 }
 
 ?>
