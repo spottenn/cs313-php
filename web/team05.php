@@ -15,7 +15,7 @@ foreach ($db->query('SELECT * FROM scriptures') as $row)
     echo $row['book'] . " " . $row['chapter'] .":" . $row['verse'];
     echo '</strong> - "';
     echo $row['content'];
-    echo '"</p><br/>';
+    echo '"</p>';
 }
 
 ?>
