@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Projector</title>
+    <link rel="stylesheet" type="text/css" href="assign04.css">
+    <link rel="stylesheet" type="text/css" href="assign08.css">
+</head>
+<body>
+
 <?php
 require "connect-db.php";
 
@@ -6,7 +16,7 @@ function getEntriesForOne($db, $projection)
 //    $projection = htmlspecialchars($_POST['projection-name']);
     try {
         $statement = $db->prepare(
-            "SELECT name, amount_cents, start_date, end_date, repeats, repeat_frequency 
+            "SELECT name, entry_type, amount_cents, start_date, end_date, repeats, repeat_frequency 
                 FROM proj_entries WHERE projection_id = (SELECT id FROM projections WHERE name = :projection)
                 ORDER BY entry_type DESC");
         $statement->bindValue(':projection', $projection);
@@ -70,4 +80,10 @@ $projection = htmlspecialchars($_POST['projection-name']);
 $entries = getEntriesForOne($db, $projection);
 printSqlResults($entries);
 
+getBankAccountsForOne($projection);
+printSqlResults();
+
 //print_r($entries);
+
+?>
+</body>
