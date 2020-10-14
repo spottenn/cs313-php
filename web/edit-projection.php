@@ -8,3 +8,4 @@ $projection = htmlspecialchars($_POST['projection-name']);
 $statement = $db->query(
     "SELECT * FROM expenses WHERE id = (SELECT id FROM projections WHERE name = 'Jane''s projection')");
 $results = $statement->fetchAll(PDO:: FETCH_ASSOC);
+print_r($results);
