@@ -18,7 +18,7 @@
 <?php
 include "connect-db.php";
 
-foreach ($db->query('SELECT * FROM scriptures WHERE book = ' . $book) as $row)
+foreach ($db->query("SELECT * FROM scriptures WHERE book = '" . $book . "'") as $row)
 {
     echo "<p><strong>";
     echo $row['book'] . " " . $row['chapter'] .":" . $row['verse'];
