@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="assign07.css">
 </head>
 <body>
+<div id="projection-selector">
 
 <?php
 require "connect-db.php";
@@ -108,4 +109,5 @@ printSqlResults($projectionList);
 //print_r($entries);
 
 ?>
+</div>
 </body>
