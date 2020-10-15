@@ -341,3 +341,27 @@ INSERT INTO proj_entries (projection_id, entry_type, name, amount_cents, start_d
     'months',
     1
 );
+
+
+INSERT INTO pretty_names VALUES ('name', 'Name');
+INSERT INTO pretty_names VALUES ('created', 'Created On');
+INSERT INTO pretty_names VALUES ('length', 'Length');
+INSERT INTO pretty_names VALUES ('expense', 'Expense');
+INSERT INTO pretty_names VALUES ('income', 'Income');
+INSERT INTO pretty_names VALUES ('entry_type', 'Entry Type');
+INSERT INTO pretty_names VALUES ('amount_cents', 'Amount in Cents');
+INSERT INTO pretty_names VALUES ('start_date', 'Starts on');
+INSERT INTO pretty_names VALUES ('end_date', 'Ends on');
+INSERT INTO pretty_names VALUES ('repeats', 'Repeats');
+INSERT INTO pretty_names VALUES ('repeat_frequency', 'Every');
+INSERT INTO pretty_names VALUES ('checking', 'Checking');
+INSERT INTO pretty_names VALUES ('savings', 'Savings');
+INSERT INTO pretty_names VALUES ('other', 'Other');
+INSERT INTO pretty_names VALUES ('type', 'Account Type');
+INSERT INTO pretty_names VALUES ('pretty_name', 'Pretty Name');
+INSERT INTO pretty_names VALUES ('pretty_names', 'Pretty Names');
+INSERT INTO pretty_names VALUES ('projections', 'Projections');
+INSERT INTO pretty_names VALUES ('repeat_type', 'Repeat Type');
+INSERT INTO pretty_names VALUES ('proj_entries', 'Projection Entries');
+INSERT INTO pretty_names VALUES ('bank_account_type', 'Bank Account Type');
+INSERT INTO pretty_names VALUES ('bank_accounts', 'Bank Accounts');

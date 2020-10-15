@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Financial Projector</title>
-    <link rel="stylesheet" type="text/css" href="./03-prove/assign04.css">
-    <link rel="stylesheet" type="text/css" href="./03-prove/assign08.css">
+<!--    <link rel="stylesheet" type="text/css" href="./03-prove/assign04.css">-->
+<!--    <link rel="stylesheet" type="text/css" href="./03-prove/assign08.css">-->
+    <link rel="stylesheet" type="text/css" href="./03-prove/assign07.css">
 </head>
 <body>
 
@@ -59,6 +60,20 @@ function getProjectionList($db)
     return $projectionList;
 }
 
+function getPrettyNames($db)
+{
+    try {
+        $statement = $db->prepare(
+            "SELECT name, pretty_name FROM pretty_names");
+        $statement->execute();
+        $prettyNames = $statement->fetchAll(PDO:: FETCH_ASSOC);
+
+    } catch (Exception $e) {
+        echo $e->getMessage() . '<br/>' . $e->getTraceAsString();
+    }
+    return $prettyNames;
+}
+
 function printSqlResults($results)
 {
     echo "<table><tr>";
@@ -81,9 +96,11 @@ $projection = htmlspecialchars($_POST['projection-name']);
 $entries = getEntriesForOne($db, $projection);
 printSqlResults($entries);
 
+echo "<br/>";
 $bankAccounts = getBankAccountsForOne($db, $projection);
 printSqlResults($bankAccounts);
 
+echo "<br/>";
 $projectionList = getProjectionList($db);
 printSqlResults($projectionList);
 
