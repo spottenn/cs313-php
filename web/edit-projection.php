@@ -30,12 +30,18 @@ $projection = htmlspecialchars($_POST['projection-name']);
 $username = htmlspecialchars($_POST['username']);
 $projectionId = getProjectionId($db, $username, $projection);
 
+
+
 $entries = getEntriesForOne($db, $projectionId);
 printSqlResults($entries);
+print_r($entries);
+
 
 echo "<br/>";
 $bankAccounts = getBankAccountsForOne($db, $projectionId);
 printSqlResults($bankAccounts);
+print_r($bankAccounts);
+
 
 echo "<br/>";
 $projectionList = getProjectionList($db);
