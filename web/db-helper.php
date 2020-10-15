@@ -1,14 +1,30 @@
 <?php
 
-function getEntriesForOne($db, $projection)
+function getProjectionId($db, $username, $projection) {
+    try {
+        $statement = $db->prepare(
+            "SELECT id FROM projections WHERE name = :projection 
+                             AND user_id = (SELECT id FROM users WHERE username = :username)");
+        $statement->bindValue(':projection', $projection);
+        $statement->bindValue(':username', $username);
+        $statement->execute();
+        $idArray = $statement->fetchAll(PDO:: FETCH_ASSOC);
+
+    } catch (Exception $e) {
+        echo $e->getMessage() . '<br/>' . $e->getTraceAsString();
+    }
+    return $idArray['id'];
+}
+
+function getEntriesForOne($db, $projectionId)
 {
 //    $projection = htmlspecialchars($_POST['projection-name']);
     try {
         $statement = $db->prepare(
             "SELECT name, entry_type, amount_cents, start_date, end_date, repeats, repeat_frequency 
-                FROM proj_entries WHERE projection_id = (SELECT id FROM projections WHERE name = :projection)
+                FROM proj_entries WHERE projection_id = (SELECT id FROM projections WHERE id = :projectionId)
                 ORDER BY entry_type DESC");
-        $statement->bindValue(':projection', $projection);
+        $statement->bindValue(':projectionId', $projectionId);
         $statement->execute();
         $entries = $statement->fetchAll(PDO:: FETCH_ASSOC);
 
@@ -18,13 +34,13 @@ function getEntriesForOne($db, $projection)
     return $entries;
 }
 
-function getBankAccountsForOne($db, $projection)
+function getBankAccountsForOne($db, $projectionId)
 {
 //    $projection = htmlspecialchars($_POST['projection-name']);
     try {
         $statement = $db->prepare(
-            "SELECT * FROM bank_accounts WHERE projection_id = (SELECT id FROM projections WHERE name = :projection)");
-        $statement->bindValue(':projection', $projection);
+            "SELECT * FROM bank_accounts WHERE projection_id = (SELECT id FROM projections WHERE id = :projectionId)");
+        $statement->bindValue(':projectionId', $projectionId);
         $statement->execute();
         $entries = $statement->fetchAll(PDO:: FETCH_ASSOC);
 
@@ -38,7 +54,7 @@ function getProjectionList($db)
 {
     try {
         $statement = $db->prepare(
-            "SELECT name, created, length FROM projections");
+            "SELECT id, name, created, length FROM projections");
         $statement->execute();
         $projectionList = $statement->fetchAll(PDO:: FETCH_ASSOC);
 

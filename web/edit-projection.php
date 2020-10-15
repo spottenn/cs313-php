@@ -16,16 +16,25 @@ require "db-helper.php";
 function printNiceEntry($entry) {
     echo "<div><table><tr>";
 
+    echo "<td>" . $entry['start_date'] . "</td>";
+    echo "<td>" . $entry['name'] . "</td>";
+
+    echo "<td>";
+    if ($entry['entry_type'] = "income") echo "+";
+    else echo "-";
 
     echo "</tr></table></div>";
 }
 
 $projection = htmlspecialchars($_POST['projection-name']);
-$entries = getEntriesForOne($db, $projection);
+$username = htmlspecialchars($_POST['username']);
+$projectionId = getProjectionId($db, $username, $projection);
+
+$entries = getEntriesForOne($db, $projectionId);
 printSqlResults($entries);
 
 echo "<br/>";
-$bankAccounts = getBankAccountsForOne($db, $projection);
+$bankAccounts = getBankAccountsForOne($db, $projectionId);
 printSqlResults($bankAccounts);
 
 echo "<br/>";

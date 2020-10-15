@@ -1,7 +1,15 @@
+CREATE TABLE users
+(
+    id       SERIAL       NOT NULL PRIMARY KEY,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    created  timestamp    NOT NULL
+);
+
 CREATE TABLE projections
 (
     id      SERIAL       NOT NULL PRIMARY KEY,
-    name    VARCHAR(100) NOT NULL UNIQUE,
+    user_id INT          NOT NULL REFERENCES users (id),
+    name    VARCHAR(100) NOT NULL,
     created timestamp    NOT NULL,
     length  interval     not null default '1 year'
 );
@@ -19,7 +27,7 @@ CREATE TABLE proj_entries
     start_date       date         NOT NULL,
     end_date         date,
     repeats          repeat_type  NOT NULL,
-    repeat_frequency INT  -- ex. 7 for repeats every 7 days
+    repeat_frequency INT -- ex. 7 for repeats every 7 days
 );
 
 CREATE TYPE bank_account_type AS ENUM ('checking', 'savings', 'other');
