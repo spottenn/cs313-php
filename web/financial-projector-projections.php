@@ -26,11 +26,11 @@ if (isset($_POST['username'])) {
     }
     else foreach ($projections as $projection) {
         $queryArray = Array ("username" => $_SESSION["username"], 'projection-name' => $projection['name']);
-        echo "<a href='team05scripture.php?";
+        echo "<p><a href='team05scripture.php?";
         echo http_build_query($queryArray);
         echo "'>";
         echo $projection['name'];
-        echo '</a><br/>';
+        echo '</a></p>';
     }
     ?>
     <form action="create-projection.php" method="post"> <!--onsubmit="return validateAll()"-->
