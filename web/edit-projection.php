@@ -26,8 +26,8 @@ function printNiceEntry($entry) {
     echo "</tr></table></div>";
 }
 
-$projection = htmlspecialchars($_POST['projection-name']);
-$username = htmlspecialchars($_POST['username']);
+$projection = htmlspecialchars($_GET['projection-name']);
+$username = htmlspecialchars($_GET['username']);
 $projectionId = getProjectionId($db, $username, $projection);
 
 
