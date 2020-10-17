@@ -26,7 +26,7 @@ if (isset($_POST['username'])) {
     }
     else foreach ($projections as $projection) {
         $queryArray = Array ("username" => $_SESSION["username"], 'projection-name' => $projection['name']);
-        echo "<p><a class='button' href='team05scripture.php?";
+        echo "<p><a class='button' href='edit-projection.php?";
         echo http_build_query($queryArray);
         echo "'>";
         echo $projection['name'];

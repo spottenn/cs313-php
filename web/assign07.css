@@ -40,7 +40,7 @@ p, form {
     font-size: 14px;
     text-align:right;
 }
-#create-projection, #create, .button {
+#create-projection, #sign-in, .button {
     background-color:#231561;
     font-size:18px;
 }
