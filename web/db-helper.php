@@ -1,18 +1,35 @@
 <?php
 
-function getProjectionId($db, $username, $projection) {
+function getSqlResults($db, $sqlString, $parameters)
+{
     try {
-        $statement = $db->prepare(
-            "SELECT id FROM projections WHERE name = :projection 
-                             AND user_id = (SELECT id FROM users WHERE username = :username)");
-        $statement->bindValue(':projection', $projection);
-        $statement->bindValue(':username', $username);
+        $statement = $db->prepare($sqlString);
+        foreach ($parameters as $paramName => $value) {
+            $statement->bindValue($paramName, $value);
+        }
         $statement->execute();
-        $idArray = $statement->fetchAll(PDO:: FETCH_ASSOC);
+        $entries = $statement->fetchAll(PDO:: FETCH_ASSOC);
 
     } catch (Exception $e) {
         echo $e->getMessage() . '<br/>' . $e->getTraceAsString();
     }
+    return $entries;
+}
+
+function getProjectionsForOne ($db, $username) {
+
+    $sqlString = "SELECT id, name, created, length FROM projections 
+        WHERE user_id = (SELECT id FROM users WHERE username = :username)";
+    $parameters = array(":username" => $username);
+    return getSqlResults($db, $sqlString, $parameters);
+}
+
+function getProjectionId($db, $username, $projection)
+{
+    $sqlString = "SELECT id FROM projections WHERE name = :projection 
+                             AND user_id = (SELECT id FROM users WHERE username = :username)";
+    $parameters = array(":projection" => $projection, ":username" => $username);
+    $idArray = getSqlResults($db, $sqlString, $parameters);
     return $idArray['id'];
 }
 

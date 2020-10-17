@@ -24,7 +24,7 @@ p, form {
     border-radius: 20px;
 
 }
-#projection-name, #term, #amount, #payment {
+#username, #term, #amount, #payment  {
     text-align:right;
     width: 300px;
     background-color:#231561;
@@ -40,7 +40,7 @@ p, form {
     font-size: 14px;
     text-align:right;
 }
-#edit, #create {
+#sign-in, #create {
     background-color:#231561;
     font-size:18px;
 }

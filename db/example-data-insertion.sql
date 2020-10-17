@@ -75,6 +75,8 @@ INSERT INTO projections (user_id, name, created, length)
 VALUES ((SELECT id FROM users WHERE username = 'jack'),'Jack''s projection', current_timestamp, '9 months');
 INSERT INTO projections (user_id, name, created)
 VALUES ((SELECT id FROM users WHERE username = 'jade'),'Jade''s projection', current_timestamp);
+INSERT INTO projections (user_id, name, created)
+VALUES ((SELECT id FROM users WHERE username = 'jade'),'Jade''s projection 2', current_timestamp);
 
 
 INSERT INTO bank_accounts (projection_id, name, type, amount_cents)
@@ -94,6 +96,11 @@ VALUES ((SELECT id FROM projections WHERE name = 'Jack''s projection'),
         50000);
 INSERT INTO bank_accounts (projection_id, name, type, amount_cents)
 VALUES ((SELECT id FROM projections WHERE name = 'Jade''s projection'),
+        'my checking',
+        'checking',
+        1000000);
+INSERT INTO bank_accounts (projection_id, name, type, amount_cents)
+VALUES ((SELECT id FROM projections WHERE name = 'Jade''s projection 2'),
         'my checking',
         'checking',
         1000000);
@@ -352,6 +359,58 @@ VALUES ((SELECT id FROM projections WHERE name = 'Jade''s projection'),
         NULL,
         'months',
         1);
+
+INSERT INTO proj_entries (projection_id, entry_type, name, amount_cents, start_date, end_date, repeats,
+                          repeat_frequency)
+VALUES ((SELECT id FROM projections WHERE name = 'Jade''s projection 2'),
+        'expense',
+        'Jade''s rent',
+        400,
+        '2020-10-26',
+        NULL,
+        'months',
+        1);
+INSERT INTO proj_entries (projection_id, entry_type, name, amount_cents, start_date, end_date, repeats,
+                          repeat_frequency)
+VALUES ((SELECT id FROM projections WHERE name = 'Jade''s projection 2'),
+        'expense',
+        'utilities',
+        100,
+        '2020-10-27',
+        NULL,
+        'months',
+        1);
+INSERT INTO proj_entries (projection_id, entry_type, name, amount_cents, start_date, end_date, repeats,
+                          repeat_frequency)
+VALUES ((SELECT id FROM projections WHERE name = 'Jade''s projection 2'),
+        'expense',
+        'netflix',
+        10,
+        '2020-10-28',
+        NULL,
+        'months',
+        1);
+INSERT INTO proj_entries (projection_id, entry_type, name, amount_cents, start_date, end_date, repeats,
+                          repeat_frequency)
+VALUES ((SELECT id FROM projections WHERE name = 'Jade''s projection 2'),
+        'expense',
+        'groceries',
+        200,
+        '2020-10-29',
+        NULL,
+        'months',
+        1);
+INSERT INTO proj_entries (projection_id, entry_type, name, amount_cents, start_date, end_date, repeats,
+                          repeat_frequency)
+VALUES ((SELECT id FROM projections WHERE name = 'Jade''s projection 2'),
+        'expense',
+        'fun',
+        50,
+        '2020-10-30',
+        NULL,
+        'months',
+        1);
+
 
 
 INSERT INTO pretty_names
