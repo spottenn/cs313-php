@@ -19,29 +19,28 @@ if (isset($_POST['username'])) {
 <body>
 <div id="projection-selector">
     <h1>Financial Projector</h1>
-    <h2>Your Projections</h2>
+    <h2>Your Current Projections</h2>
     <?php
     if (!isset($_SESSION["username"])) {
-        echo "<p>Error: You've been logged out.</p> <a href='financial-projector.php'>Log back In</a>";
+        echo "<p>Error: You've been logged out.</p> <a class='button' href='financial-projector.php'>Log back In</a>";
     }
     else foreach ($projections as $projection) {
         $queryArray = Array ("username" => $_SESSION["username"], 'projection-name' => $projection['name']);
-        echo "<p><a href='team05scripture.php?";
+        echo "<p><a class='button' href='team05scripture.php?";
         echo http_build_query($queryArray);
         echo "'>";
         echo $projection['name'];
         echo '</a></p>';
     }
     ?>
+    <br/><br/>
     <form action="create-projection.php" method="post"> <!--onsubmit="return validateAll()"-->
-        Projection<br>
+        New Projection<br>
         <input id="projection" class="input-field" type="text" name="projection"><!--oninput="validateName()"-->
 <!--        <p id="name-feedback" class="feedback"></p><br>-->
 <!--        <p></p>-->
-        <input id="sign-in" type="submit" value="Sign In">
+        <input id="create-projection" type="submit" value="Create">
     </form>
-    <p class="notice">*Please note, your projections are not password protected. Please do not enter any personal information.
-        Projections are deleted on the second night after your projection was last edited</p>
 </div>
 <!--<script>-->
 <!--    function validateAll() {-->
