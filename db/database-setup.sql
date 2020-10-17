@@ -3,7 +3,7 @@ CREATE TABLE users
     id       SERIAL       NOT NULL PRIMARY KEY,
     username VARCHAR(100) NOT NULL UNIQUE,
     created  timestamp    NOT NULL,
-    edited  timestamp    NOT NULL
+    edited  timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE projections

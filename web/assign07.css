@@ -2,7 +2,7 @@
     font-family:monospace;
     color: #d6fff6;
 }
-input .button {
+input, .button {
     /*border-color:none;*/
     border:2px solid #4dccbd;
     border-radius:4px;
