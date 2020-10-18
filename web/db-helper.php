@@ -31,7 +31,8 @@ function getProjectionId($db, $username, $projection)
     $parameters = array(":projection" => $projection, ":username" => $username);
     $idArray = getSqlResults($db, $sqlString, $parameters);
     echo "idArray" . print_r($idArray);
-    return $idArray['id'];
+    echo  "idArray[1]['id'];" . $idArray[1]['id'];
+    return $idArray[1]['id'];
 }
 
 function getEntriesForOne($db, $projectionId)
