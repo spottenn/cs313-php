@@ -20,8 +20,6 @@ function printNiceEntry($entry)
     }
     echo "$" . $entry['amount_cents'] / 100 . "</td>";
 
-    echo "<td>to be computed</td>";
-
     echo "</tr>";
 }
 
@@ -32,10 +30,14 @@ function printNiceEntries($entries, $bankAccounts)
     echo "<td>Name</td>";
     echo "<td>Type</td>";
     echo "<td>Amount</td>";
-    echo "<td>Balance</td>";
     echo "</tr>";
     foreach ($bankAccounts as $bankAccount) {
-
+        echo "<tr>";
+        echo "<td></td>";
+        echo "<td>" . $bankAccount['name'] . "</td>";
+        echo "<td>" . $bankAccount['type'] . " account</td>";
+        echo "$" . $bankAccount['amount_cents'] / 100 . "</td>";
+        echo "<tr>";
     }
     foreach ($entries as $entry) {
         printNiceEntry($entry);
@@ -110,6 +112,6 @@ $bankAccounts = getBankAccountsForOne($db, $projectionId);
 </div>
 <div>
     <h2>Entries</h2>
-    <?php printNiceEntries($entries); ?>
+    <?php printNiceEntries($entries, $bankAccounts); ?>
 </div>
 </body>
