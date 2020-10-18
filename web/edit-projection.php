@@ -10,7 +10,7 @@
 <div id="projection-selector">
 
 <?php
-require "connect-db-local.php";
+require "connect-db.php";
 require "db-helper.php";
 
 function printNiceEntry($entry) {
