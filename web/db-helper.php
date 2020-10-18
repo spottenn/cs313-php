@@ -30,9 +30,6 @@ function getProjectionId($db, $username, $projection)
                              AND user_id = (SELECT id FROM users WHERE username = :username)";
     $parameters = array(":projection" => $projection, ":username" => $username);
     $idArray = getSqlResults($db, $sqlString, $parameters);
-    echo "line33<br>";
-    echo "idArray" . print_r($idArray);
-    echo  "idArray[0]['id'];" . $idArray[0]['id'];
     return $idArray[0]['id'];
 }
 

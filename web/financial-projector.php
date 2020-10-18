@@ -10,7 +10,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="financial-projector.css">
 </head>
 <body>
-<div id="projection-selector"><h1>Financial Projector</h1>
+<div id="primary-div"><h1>Financial Projector</h1>
     <form action="financial-projector-projections.php" method="post"> <!--onsubmit="return validateAll()"-->
         Username<br>
         <input id="username" class="input-field" type="text" name="username"><!--oninput="validateName()"-->
