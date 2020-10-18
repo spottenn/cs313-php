@@ -6,21 +6,21 @@ require "db-helper.php";
 
 function printNiceEntry($entry)
 {
-    echo "<div class='entry'><table><tr>";
+    echo "<tr class='entry'>";
 
     echo "<td>" . $entry['start_date'] . "</td>";
     echo "<td>" . $entry['name'] . "</td>";
 
     echo "<td>";
-    if ($entry['entry_type'] = "income") {
+    if ($entry['entry_type'] == "income") {
         echo "+";
     }
     else {
         echo "-";
     }
-    echo "$" . $entry['amount-cents']/100;
+    echo "$" . $entry['amount_cents']/100;
 
-    echo "</tr></table></div>";
+    echo "</tr>";
 }
 function printNiceEntries($entries) {
     echo "<div id='entries'>";
