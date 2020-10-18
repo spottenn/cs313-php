@@ -10,7 +10,7 @@ function printNiceEntry($entry)
 
     echo "<td>" . $entry['start_date'] . "</td>";
     echo "<td>" . $entry['name'] . "</td>";
-    echo "<td>" . $entry['type'] . "</td>";
+    echo "<td>" . $entry['entry_type'] . "</td>";
 
     echo "<td>";
     if ($entry['entry_type'] == "income") {
