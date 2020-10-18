@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Financial Projector - Projection</title>
-    <link rel="stylesheet" type="text/css" href="assign07.css">
+    <link rel="stylesheet" type="text/css" href="../assign07.css">
     <link rel="stylesheet" type="text/css" href="financial-projector.css">
 </head>
 <body>

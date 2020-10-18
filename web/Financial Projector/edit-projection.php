@@ -76,9 +76,9 @@ $bankAccounts = getBankAccountsForOne($db, $projectionId);
 <head>
     <meta charset="UTF-8">
     <title>Financial Projector</title>
-    <link rel="stylesheet" type="text/css" href="./03-prove/assign04.css">
-    <link rel="stylesheet" type="text/css" href="./03-prove/assign08.css">
-    <link rel="stylesheet" type="text/css" href="assign07.css">
+    <link rel="stylesheet" type="text/css" href="../03-prove/assign04.css">
+    <link rel="stylesheet" type="text/css" href="../03-prove/assign08.css">
+    <link rel="stylesheet" type="text/css" href="../assign07.css">
     <link rel="stylesheet" type="text/css" href="financial-projector.css">
 </head>
 <body>

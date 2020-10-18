@@ -6,12 +6,12 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Financial Projector</title>
-    <link rel="stylesheet" type="text/css" href="assign07.css">
+    <link rel="stylesheet" type="text/css" href="../assign07.css">
     <link rel="stylesheet" type="text/css" href="financial-projector.css">
 </head>
 <body>
 <div id="primary-div"><h1>Financial Projector</h1>
-    <form action="financial-projector-projections.php" method="post"> <!--onsubmit="return validateAll()"-->
+    <form action="../projections.php" method="post"> <!--onsubmit="return validateAll()"-->
         Username<br>
         <input id="username" class="input-field" type="text" name="username"><!--oninput="validateName()"-->
 <!--        <p id="name-feedback" class="feedback"></p><br>-->
