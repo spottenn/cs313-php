@@ -19,7 +19,7 @@ session_start();
         <input id="sign-in" type="submit" value="Sign In">
     </form>
     <p class="notice">*Please note, your projections are not password protected. Please do not enter any personal information.
-        Projections are deleted on the second night after your projection was last edited</p>
+        Projections are deleted on the second night after your projection was last edited.</p>
 </div>
 <!--<script>-->
 <!--    function validateAll() {-->

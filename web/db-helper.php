@@ -56,7 +56,7 @@ function getBankAccountsForOne($db, $projectionId)
 //    $projection = htmlspecialchars($_POST['projection-name']);
     try {
         $statement = $db->prepare(
-            "SELECT * FROM bank_accounts WHERE projection_id = (SELECT id FROM projections WHERE id = :projectionId)");
+            "SELECT name, type, amount_cents FROM bank_accounts WHERE projection_id = (SELECT id FROM projections WHERE id = :projectionId)");
         $statement->bindValue(':projectionId', $projectionId);
         $statement->execute();
         $entries = $statement->fetchAll(PDO:: FETCH_ASSOC);

@@ -10,27 +10,33 @@ function printNiceEntry($entry)
 
     echo "<td>" . $entry['start_date'] . "</td>";
     echo "<td>" . $entry['name'] . "</td>";
+    echo "<td>" . $entry['type'] . "</td>";
 
     echo "<td>";
     if ($entry['entry_type'] == "income") {
         echo "+";
-    }
-    else {
+    } else {
         echo "-";
     }
-    echo "$" . $entry['amount_cents']/100 . "</td>";
+    echo "$" . $entry['amount_cents'] / 100 . "</td>";
 
     echo "<td>to be computed</td>";
 
     echo "</tr>";
 }
-function printNiceEntries($entries) {
+
+function printNiceEntries($entries, $bankAccounts)
+{
     echo "<div id='entries'><table><tr>";
     echo "<td>Date</td>";
     echo "<td>Name</td>";
+    echo "<td>Type</td>";
     echo "<td>Amount</td>";
     echo "<td>Balance</td>";
     echo "</tr>";
+    foreach ($bankAccounts as $bankAccount) {
+
+    }
     foreach ($entries as $entry) {
         printNiceEntry($entry);
     }
@@ -49,7 +55,7 @@ $entries = getEntriesForOne($db, $projectionId);
 //
 //
 //echo "<br/>";
-//$bankAccounts = getBankAccountsForOne($db, $projectionId);
+$bankAccounts = getBankAccountsForOne($db, $projectionId);
 //printSqlResults($bankAccounts);
 //print_r($bankAccounts);
 //
@@ -76,7 +82,34 @@ $entries = getEntriesForOne($db, $projectionId);
 <body>
 <div id="primary-div">
     <h1>Financial Projector</h1>
-    <h2><?php echo $projection?></h2>
+    <h2>Edit Projection:<?php echo $projection; ?></h2>
+    <br/><br/>
+    <h2>Functionality to add entries will be added here.</h2>
+<!--    <form action="edit-projection.php">-->
+<!--        Name<br>-->
+<!--        <input id="apr" class="input-field" type="text" name="apr" oninput="validateApr()">-->
+<!--        <p id="apr-feedback" class="feedback"></p><br>-->
+<!--        <p></p>-->
+<!--        Type<br>-->
+<!--        <select><option>income</option><option>expense</option><option>bank account</option></select>-->
+<!--        Type<br>-->
+<!--        <select><option>income</option><option>expense</option><option>bank account</option></select>-->
+<!--        Type<br>-->
+<!--        <input id="term" class="input-field" type="text" name="term" oninput="validateTerm()">-->
+<!--        <p id="term-feedback" class="feedback"></p><br>-->
+<!--        <p></p>-->
+<!--        Loan Amount ($):<br>-->
+<!--        <input id="amount" class="input-field" type="text" name="amount" oninput="validateAmount()">-->
+<!--        <p id="amount-feedback" class="feedback"></p><br>-->
+<!--        <input id="calculate" type="button" value="Calculate">-->
+<!--        <input id="clear" type="reset"><br>-->
+<!--        <p id="payment-title">Monthly Payment:</p>-->
+<!--        <output id="payment"> $0.00</output>-->
+<!--    </form>-->
+    <p><a class='button' href='generate-projection.php'>Generate Projection</a></p>
 </div>
-<?php printNiceEntries($entries); ?>
+<div>
+    <h2>Entries</h2>
+    <?php printNiceEntries($entries); ?>
+</div>
 </body>
