@@ -18,16 +18,23 @@ function printNiceEntry($entry)
     else {
         echo "-";
     }
-    echo "$" . $entry['amount_cents']/100;
+    echo "$" . $entry['amount_cents']/100 . "</td>";
+
+    echo "<td>to be computed</td>";
 
     echo "</tr>";
 }
 function printNiceEntries($entries) {
-    echo "<div id='entries'>";
+    echo "<div id='entries'><table><tr>";
+    echo "<td>Date</td>";
+    echo "<td>Name</td>";
+    echo "<td>Amount</td>";
+    echo "<td>Balance</td>";
+    echo "</tr>";
     foreach ($entries as $entry) {
         printNiceEntry($entry);
     }
-    echo "</div>";
+    echo "</table></div>";
 }
 
 $projection = htmlspecialchars($_GET['projection-name']);
