@@ -29,7 +29,7 @@ function printNiceEntry($entry) {
 $projection = htmlspecialchars($_GET['projection-name']);
 $username = htmlspecialchars($_GET['username']);
 $projectionId = getProjectionId($db, $username, $projection);
-
+echo "projection id: " . $projectionId;
 
 
 $entries = getEntriesForOne($db, $projectionId);
