@@ -36,7 +36,7 @@ function printNiceEntries($entries, $bankAccounts)
         echo "<td></td>";
         echo "<td>" . $bankAccount['name'] . "</td>";
         echo "<td>" . $bankAccount['type'] . " account</td>";
-        echo "$" . $bankAccount['amount_cents'] / 100 . "</td>";
+        echo "<td>+$" . $bankAccount['amount_cents'] / 100 . "</td>";
         echo "<tr>";
     }
     foreach ($entries as $entry) {
@@ -86,7 +86,7 @@ $bankAccounts = getBankAccountsForOne($db, $projectionId);
     <h1>Financial Projector</h1>
     <h2>Edit Projection:<?php echo $projection; ?></h2>
     <br/><br/>
-    <h2>Functionality to add entries will be added here.</h2>
+    <p>Functionality to add entries will be added here.</p>
 <!--    <form action="edit-projection.php">-->
 <!--        Name<br>-->
 <!--        <input id="apr" class="input-field" type="text" name="apr" oninput="validateApr()">-->
