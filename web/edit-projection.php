@@ -6,7 +6,7 @@ require "db-helper.php";
 
 function printNiceEntry($entry)
 {
-    echo "<tr class='entry'>";
+    echo "<tr class='entry, " . $entry['entry_type'] . "'>";
 
     echo "<td>" . $entry['start_date'] . "</td>";
     echo "<td>" . $entry['name'] . "</td>";

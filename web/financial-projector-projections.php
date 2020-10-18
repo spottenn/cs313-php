@@ -17,7 +17,7 @@ if (isset($_POST['username'])) {
     <link rel="stylesheet" type="text/css" href="financial-projector.css">
 </head>
 <body>
-<div id="projection-selector">
+<div id="primary-div">
     <h1>Financial Projector</h1>
     <h2>Your Current Projections</h2>
     <?php
