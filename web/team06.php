@@ -1,7 +1,7 @@
 <?php
 require 'connect-db.php';
 require 'team06functions.php';
-insertSrcipture($db);
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,9 +31,11 @@ insertSrcipture($db);
     <input type="text" name="new-topic-name">
     <input type="submit" value="Submit">
 </form>
+
 <h1>Scripture List</h1>
 <div id="scrip-list"><?php
     var_dump($_POST);
+    insertSrcipture($db);
     include "scriptureList.php";
     ?></div>
 <script>
