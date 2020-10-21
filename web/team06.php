@@ -43,12 +43,12 @@ require 'team06functions.php';
     //     console.log(got)
     //     return false;
     // });
-    // $('#insert-form').on('submit', function(e) {
-    //     e.preventDefault(); // prevent native submit
-    //     $.post("team06InsertScrip.php", $('#insert-form').serialize(), function (data) {
-    //         $('#scrip-list').load('scriptureList.php');
-    //     })
-    //
-    // });
+    $('#insert-form').on('submit', function(e) {
+        e.preventDefault(); // prevent native submit
+        $.post("team06InsertScrip.php", $('#insert-form').serialize(), function (data) {
+            $('#scrip-list').load('scriptureList.php');
+        })
+
+    });
 </script>
 </body>
