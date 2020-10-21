@@ -46,6 +46,13 @@ function insertSrcipture($db)
     $verse = htmlspecialchars($_POST['verse']);
     $content = htmlspecialchars($_POST['content']);
     $topicIds = Array();
+    if (isset($_POST['new-topic'])) {
+        $sqlString = "INSERT INTO topics (name) VALUES (:name)";
+        $name = htmlspecialchars($_POST['new-topic-name']);
+        $parameters = array(":name" => $name);
+        insertSqlStatement($db, $sqlString, $parameters);
+        $topicIds[] = $db->lastInsertId('topics_id_seq');
+    }
     $dbTopics = getTopics($db);
     foreach ($dbTopics as $row) {
         $id = $row['id'];
@@ -54,13 +61,6 @@ function insertSrcipture($db)
 //        $id = htmlspecialchars($_POST[$dbTopic]);
             $topicIds[] = $id;
         }
-    }
-    if (isset($_POST['new-topic']) && isset($_POST['new-topic-name'])) {
-        $sqlString = "INSERT INTO topics (name) VALUES (:name)";
-        $name = htmlspecialchars($_POST['new-topic-name']);
-        $parameters = array(":name" => $name);
-        insertSqlStatement($db, $sqlString, $parameters);
-        $topicIds[] = $db->lastInsertId('topics_id_seq');
     }
 
     $sqlString = "INSERT INTO Scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :scripContent)";
