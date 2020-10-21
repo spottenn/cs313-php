@@ -34,7 +34,6 @@ require 'team06functions.php';
 
 <h1>Scripture List</h1>
 <div id="scrip-list"><?php
-    var_dump($_POST);
     insertSrcipture($db);
     include "scriptureList.php";
     ?></div>

@@ -50,3 +50,6 @@ SElECT t.name FROM Scriptures as s JOIN scripture_topics as st on s.id = st.scri
 SElECT st.id FROM Scriptures as s JOIN scripture_topics as st on s.id = st.scriptureId;
 
 SELECT * from topics;
+
+
+INSERT INTO Scriptures (book, chapter, verse, content) VALUES ('asdf', 2, 5, 'please work');

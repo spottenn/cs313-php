@@ -5,7 +5,7 @@ if (!isset($db)) {
 }
 foreach ($db->query('SELECT * FROM Scriptures') as $row)
 {
-    $queryArray = Array (book => $row['book'], chapter => $row['chapter'], verse => $row['verse']);
+    $queryArray = Array ('book' => $row['book'], 'chapter' => $row['chapter'], 'verse' => $row['verse']);
     echo "<a href='team05scripture.php?";
     echo http_build_query($queryArray);
     echo "'><strong>";
@@ -17,8 +17,8 @@ foreach ($db->query('SELECT * FROM Scriptures') as $row)
     as t on st.topicsId = t.id WHERE s.id = :scripId;";
     $parameters = array(":scripId" => $row['id']);
     $topics = getSqlResults($db, $sqlString, $parameters);
-    foreach ($topics as $row) {
-        echo $row['name'] . ", ";
+    foreach ($topics as $topicrow) {
+        echo $topicrow['name'] . ", ";
     }
     echo ' - "';
     echo $row['content'];
