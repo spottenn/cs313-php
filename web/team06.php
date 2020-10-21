@@ -11,7 +11,7 @@ insertSrcipture($db);
 </head>
 <body>
 <h1>Insert Scripture</h1>
-<form id="insert-form" action="team06InsertScrip.php" method="post" onsubmit="function () {return false;}">
+<form id="insert-form" action="team06InsertScrip.php" method="post">
     <label for="book">Book: </label><input type="text" name="book"><br>
     <label for="chapter">Chapter: </label><input type="text" name="chapter"><br>
     <label for="verse">Verse: </label><input type="text" name="verse"><br>
@@ -34,6 +34,7 @@ insertSrcipture($db);
 <script>
     $("#insert-form").ajaxForm(function () {
         $('#scrip-list').load('scriptureList');
+        return false;
     });
 </script>
 </body>
