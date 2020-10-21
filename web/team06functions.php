@@ -36,3 +36,10 @@ function getTopics ($db) {
     $parameters = array();
     return getSqlResults($db, $sqlString, $parameters);
 }
+
+
+function getTopicsForOne ($db, $scripId) {
+    $sqlString = "SELECT * FROM topics WHERE ";
+    $parameters = array();
+    return getSqlResults($db, $sqlString, $parameters);
+}

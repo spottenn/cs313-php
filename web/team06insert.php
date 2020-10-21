@@ -23,6 +23,10 @@ foreach ($dbTopics as $id => $dbTopic) {
         $topicIds[] = $id;
     }
 }
+print_r($topicIds);
+var_dump($topicIds);
+echo "<br><br>";
+var_dump($_POST);
 
 $sqlString = "INSERT INTO Scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content)";
 $parameters = array(":book" => $book, ":chapter" => $chapter, ":verse" => $verse, ":content" => $content);
@@ -46,7 +50,7 @@ foreach ($db->query('SELECT * FROM Scriptures') as $row)
     echo $row['book'] . " " . $row['chapter'] .":" . $row['verse'];
     echo '</strong>';// - "';
 //    echo $row['content'];
-    echo '"</a><br/>';
+    echo 'topics: "</a><br/>';
 }
 
 ?>
