@@ -27,7 +27,9 @@ foreach ($dbTopics as $row) {
 }
 if (isset($_POST['new-topic']) && isset($_POST['new-topic-name'])) {
     $sqlString = "INSERT INTO topics (name) VALUES (:name)";
-    $parameters = array(":name", htmlspecialchars($_POST['new-topic-name']));
+    $name = htmlspecialchars($_POST['new-topic-name']);
+    echo "topic name: " . $name;
+    $parameters = array(":name", name);
     insertSqlStatement($db, $sqlString, $parameters);
     $topicIds[] =$db->lastInsertId('topics_id_seq');
 }
