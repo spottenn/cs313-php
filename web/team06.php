@@ -23,6 +23,7 @@ require 'team06functions.php';
 <label for=\"" . $topic . "\">" . $topic . "</label><br>";
         }
         ?>
+    <input type="submit" value="Submit">
 </form>
 <?php
 ?>
