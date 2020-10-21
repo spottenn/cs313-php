@@ -46,4 +46,4 @@ create table scripture_topics
 INSERT INTO topics (name)
 VALUES ('Faith'), ('Hope'), ('Charity');
 
-SElECT st.id FROM Scriptures as s JOIN scripture_topics as st on s.id = st.scriptureId;
+SElECT t.name FROM Scriptures as s JOIN scripture_topics as st on s.id = st.scriptureId JOIN topics as t on st.topicsId = t.id;
