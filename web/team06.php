@@ -7,10 +7,11 @@ insertSrcipture($db);
 <head>
     <meta charset="UTF-8">
     <title>Team 06</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>Insert Scripture</h1>
-<form action="team06.php" method="post">
+<form id="insert-form" action="team06InsertScrip.php" method="post">
     <label for="book">Book: </label><input type="text" name="book"><br>
     <label for="chapter">Chapter: </label><input type="text" name="chapter"><br>
     <label for="verse">Verse: </label><input type="text" name="verse"><br>
@@ -29,5 +30,10 @@ insertSrcipture($db);
     <input type="submit" value="Submit">
 </form>
 <h1>Scripture List</h1>
-<?php include "scriptureList.php"; ?>
+<div id="scrip-list"><?php include "scriptureList.php"; ?></div>
+<script>
+    $("#insert-form").ajaxForm(function () {
+        $('#scrip-list').load('scriptureList');
+    });
+</script>
 </body>
