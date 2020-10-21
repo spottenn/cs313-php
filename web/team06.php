@@ -10,7 +10,7 @@ insertSrcipture($db);
 </head>
 <body>
 <h1>Insert Scripture</h1>
-<form action="team06insert.php" method="post">
+<form action="team06.php" method="post">
     <label for="book">Book: </label><input type="text" name="book"><br>
     <label for="chapter">Chapter: </label><input type="text" name="chapter"><br>
     <label for="verse">Verse: </label><input type="text" name="verse"><br>
