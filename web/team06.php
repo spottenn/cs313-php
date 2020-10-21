@@ -37,11 +37,10 @@ insertSrcipture($db);
     //     console.log(got)
     //     return false;
     // });
-    $('#myFormId').submit(function() {
+    $('#insert-form').submit(function() {
         $(this).ajaxSubmit(function () {
+            console.log("got here");
             $('#scrip-list').load('scriptureList');
-            console.log(gothere)
-            return false;
         });
         return false;
     });
