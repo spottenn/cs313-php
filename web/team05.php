@@ -9,7 +9,7 @@
 <?php
 include "connect-db.php";
 
-foreach ($db->query('SELECT * FROM scriptures') as $row)
+foreach ($db->query('SELECT * FROM Scriptures') as $row)
 {
     $queryArray = Array (book => $row['book'], chapter => $row['chapter'], verse => $row['verse']);
     echo "<a href='team05scripture.php?";
