@@ -16,7 +16,9 @@ require 'team06functions.php';
     <label for="content">Content: </label><textarea name="content"></textarea><br>
         <?php
         $topics = getTopics($db);
-        foreach ($topics as $id => $topic) {
+        foreach ($topics as $row) {
+            $topic = $row['name'];
+            $id = $row['id'];
             echo "<input type=\"checkbox\" id=\"" . $topic . "\" name=\"" . $topic . "\" value=\"" . $id ."\">
 <label for=\"" . $topic . "\">" . $topic . "</label><br>";
         }

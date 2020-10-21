@@ -46,14 +46,3 @@ create table scripture_topics
 INSERT INTO topics (name)
 VALUES ('Faith'), ('Hope'), ('Charity');
 
-
-INSERT INTO Scriptures (book, chapter, verse, content)
-VALUES ('John',
-        1,
-        5,
-        'And the light shineth in darkness; and the darkness comprehended it not.');
-INSERT INTO scripture_topics
-VALUES
-(
- 1, 2
-);
