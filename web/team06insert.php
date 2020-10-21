@@ -17,7 +17,9 @@ $verse = htmlspecialchars($_POST['verse']);
 $content = htmlspecialchars($_POST['content']);
 $dbTopics = getTopics($db);
 $topicIds = Array();
-foreach ($dbTopics as $id => $dbTopic) {
+foreach ($dbTopics as $row) {
+    $id = $row['id'];
+    $dbTopic = $row['name'];
     if (isset($_POST[$dbTopic])) {
         $id = htmlspecialchars($_POST[$dbTopic]);
         $topicIds[] = $id;
