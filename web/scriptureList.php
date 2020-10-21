@@ -1,5 +1,6 @@
 <?php
 require 'connect-db.php';
+require 'team06functions.php';
 foreach ($db->query('SELECT * FROM Scriptures') as $row)
 {
     $queryArray = Array (book => $row['book'], chapter => $row['chapter'], verse => $row['verse']);
