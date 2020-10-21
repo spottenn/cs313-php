@@ -17,11 +17,17 @@ function getSqlResults($db, $sqlString, $parameters)
 }
 
 function getProjectionsForOne ($db, $username) {
-
     $sqlString = "SELECT id, name, created, length FROM projections 
         WHERE user_id = (SELECT id FROM users WHERE username = :username)";
     $parameters = array(":username" => $username);
     return getSqlResults($db, $sqlString, $parameters);
+}
+
+function getProjectionDetailsById ($db, $projectionId) {
+    $sqlString = "SELECT id, name, created, length FROM projections 
+        WHERE id = :id";
+    $parameters = array(":id" => $projectionId);
+    return getSqlResults($db, $sqlString, $parameters)[0];
 }
 
 function getProjectionId($db, $username, $projection)

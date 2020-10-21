@@ -13,8 +13,8 @@ foreach ($db->query('SELECT * FROM Scriptures') as $row)
     echo '</strong>';// - "';
 //    echo $row['content'];
     echo '</a> topics: ';
-    $sqlString = "SElECT t.name FROM Scriptures as s JOIN scripture_topics as st on s.id = st.scriptureId JOIN topics 
-    as t on st.topicsId = t.id WHERE s.id = :scripId;";
+    $sqlString = "SElECT t.name FROM scripture_topics as st JOIN topics 
+    as t on st.topicsId = t.id WHERE st.scriptureid = :scripId;";
     $parameters = array(":scripId" => $row['id']);
     $topics = getSqlResults($db, $sqlString, $parameters);
     foreach ($topics as $topicrow) {

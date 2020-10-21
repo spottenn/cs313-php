@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'connect-db.php';
-require 'db-helper.php';
+require_once 'connect-db.php';
+require_once 'db-helper.php';
 
 if (isset($_POST['username'])) {
     $_SESSION['username'] = htmlspecialchars($_POST['username']);
@@ -36,7 +36,7 @@ if (isset($_POST['username'])) {
     <br/><br/>
     <form action="create-projection.php" method="post"> <!--onsubmit="return validateAll()"-->
         New Projection<br>
-        <input id="projection" class="input-field" type="text" name="projection"><!--oninput="validateName()"-->
+        <input id="projection-name" class="input-field" type="text" name="projection"><!--oninput="validateName()"-->
 <!--        <p id="name-feedback" class="feedback"></p><br>-->
 <!--        <p></p>-->
         <input id="create-projection" type="submit" value="Create">

@@ -24,7 +24,7 @@ p, form {
     border-radius: 20px;
 
 }
-#username, #term, #amount, #projection  {
+#username, #term, #amount, #projection-name  {
     text-align:right;
     width: 300px;
     background-color:#231561;

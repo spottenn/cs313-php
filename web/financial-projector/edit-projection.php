@@ -1,55 +1,16 @@
 <?php
 session_start();
 
-require "connect-db.php";
-require "db-helper.php";
-
-function printNiceEntry($entry)
-{
-    echo "<tr class='entry, " . $entry['entry_type'] . "'>";
-
-    echo "<td>" . $entry['start_date'] . "</td>";
-    echo "<td>" . $entry['name'] . "</td>";
-    echo "<td>" . $entry['entry_type'] . "</td>";
-
-    echo "<td>";
-    if ($entry['entry_type'] == "income") {
-        echo "+";
-    } else {
-        echo "-";
-    }
-    echo "$" . $entry['amount_cents'] / 100 . "</td>";
-
-    echo "</tr>";
-}
-
-function printNiceEntries($entries, $bankAccounts)
-{
-    echo "<div id='entries'><table><tr>";
-    echo "<td>Date</td>";
-    echo "<td>Name</td>";
-    echo "<td>Type</td>";
-    echo "<td>Amount</td>";
-    echo "</tr>";
-    foreach ($bankAccounts as $bankAccount) {
-        echo "<tr>";
-        echo "<td></td>";
-        echo "<td>" . $bankAccount['name'] . "</td>";
-        echo "<td>" . $bankAccount['type'] . " account</td>";
-        echo "<td>+$" . $bankAccount['amount_cents'] / 100 . "</td>";
-        echo "<tr>";
-    }
-    foreach ($entries as $entry) {
-        printNiceEntry($entry);
-    }
-    echo "</table></div>";
-}
+require_once "connect-db.php";
+require_once "db-helper.php";
+require_once 'helper-functions.php';
 
 $projection = htmlspecialchars($_GET['projection-name']);
 $username = htmlspecialchars($_GET['username']);
 $projectionId = getProjectionId($db, $username, $projection);
 //echo "projection id: " . $projectionId;
 
+$_SESSION['projectionId'] = $projectionId;
 
 $entries = getEntriesForOne($db, $projectionId);
 //printSqlResults($entries);
@@ -84,7 +45,7 @@ $bankAccounts = getBankAccountsForOne($db, $projectionId);
 <body>
 <div id="primary-div">
     <h1>Financial Projector</h1>
-    <h2>Edit Projection:<?php echo $projection; ?></h2>
+    <h2>Edit Projection: <?php echo $projection; ?></h2>
     <br/><br/>
     <p>Functionality to add entries will be added here.</p>
 <!--    <form action="edit-projection.php">-->
@@ -108,7 +69,7 @@ $bankAccounts = getBankAccountsForOne($db, $projectionId);
 <!--        <p id="payment-title">Monthly Payment:</p>-->
 <!--        <output id="payment"> $0.00</output>-->
 <!--    </form>-->
-    <p><a class='button' href='generate-projection.php'>Generate Projection</a></p>
+    <p><a class='button' href='view-projection.php'>Generate Projection</a></p>
 </div>
 <div>
     <h2>Entries</h2>
