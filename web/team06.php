@@ -1,6 +1,7 @@
 <?php
 require 'connect-db.php';
 require 'team06functions.php';
+insertSrcipture($db);
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,5 +28,6 @@ require 'team06functions.php';
     <input type="text" name="new-topic-name">
     <input type="submit" value="Submit">
 </form>
-<?php
-?>
+<h1>Scripture List</h1>
+<?php include "scriptureList.php"; ?>
+</body>

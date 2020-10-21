@@ -36,10 +36,42 @@ function getTopics ($db) {
     $parameters = array();
     return getSqlResults($db, $sqlString, $parameters);
 }
+function insertSrcipture($db)
+{
+    if (!isset($_POST['book'])) {
+        return;
+}
+    $book = htmlspecialchars($_POST['book']);
+    $chapter = htmlspecialchars($_POST['chapter']);
+    $verse = htmlspecialchars($_POST['verse']);
+    $content = htmlspecialchars($_POST['content']);
+    $topicIds = Array();
+    $dbTopics = getTopics($db);
+    foreach ($dbTopics as $row) {
+        $id = $row['id'];
+        $dbTopic = $row['name'];
+        if (isset($_POST[$dbTopic])) {
+//        $id = htmlspecialchars($_POST[$dbTopic]);
+            $topicIds[] = $id;
+        }
+    }
+    if (isset($_POST['new-topic']) && isset($_POST['new-topic-name'])) {
+        $sqlString = "INSERT INTO topics (name) VALUES (:name)";
+        $name = htmlspecialchars($_POST['new-topic-name']);
+        $parameters = array(":name" => $name);
+        insertSqlStatement($db, $sqlString, $parameters);
+        $topicIds[] = $db->lastInsertId('topics_id_seq');
+    }
 
+    $sqlString = "INSERT INTO Scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content)";
+    $parameters = array(":book" => $book, ":chapter" => $chapter, ":verse" => $verse, ":content" => $content);
+    insertSqlStatement($db, $sqlString, $parameters);
 
-function getTopicsForOne ($db, $scripId) {
-    $sqlString = "SELECT * FROM topics WHERE ";
-    $parameters = array();
-    return getSqlResults($db, $sqlString, $parameters);
+    $scripId = $db->lastInsertId('scriptures_id_seq');
+
+    foreach ($topicIds as $topicId) {
+        $sqlString = "INSERT INTO scripture_topics (scriptureId, topicsId) VALUES( :scripId, :topicId)";
+        $parameters = array(":scripId" => $scripId, ":topicId" => $topicId);
+        insertSqlStatement($db, $sqlString, $parameters);
+    }
 }
