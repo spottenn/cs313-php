@@ -25,6 +25,9 @@ foreach ($dbTopics as $id => $dbTopic) {
 }
 print_r($topicIds);
 var_dump($topicIds);
+echo "<br><br>dbTopics";
+var_dump($dbTopics);
+
 echo "<br><br>";
 var_dump($_POST);
 
