@@ -32,7 +32,10 @@ insertSrcipture($db);
     <input type="submit" value="Submit">
 </form>
 <h1>Scripture List</h1>
-<div id="scrip-list"><?php include "scriptureList.php"; ?></div>
+<div id="scrip-list"><?php
+    var_dump($_POST);
+    include "scriptureList.php";
+    ?></div>
 <script>
     // $("#insert-form").ajaxForm(function () {
     //     $('#scrip-list').load('scriptureList');
