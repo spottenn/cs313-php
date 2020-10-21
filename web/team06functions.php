@@ -63,8 +63,8 @@ function insertSrcipture($db)
         $topicIds[] = $db->lastInsertId('topics_id_seq');
     }
 
-    $sqlString = "INSERT INTO Scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content)";
-    $parameters = array(":book" => $book, ":chapter" => $chapter, ":verse" => $verse, ":content" => $content);
+    $sqlString = "INSERT INTO Scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :scripContent)";
+    $parameters = array(":book" => $book, ":chapter" => $chapter, ":verse" => $verse, ":scripContent" => $content);
     insertSqlStatement($db, $sqlString, $parameters);
 
     $scripId = $db->lastInsertId('scriptures_id_seq');
