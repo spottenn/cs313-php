@@ -23,6 +23,8 @@ require 'team06functions.php';
 <label for=\"" . $topic . "\">" . $topic . "</label><br>";
         }
         ?>
+    <input type="checkbox" name="new-topic" value="new-topic">
+    <input type="text" name="new-topic-name">
     <input type="submit" value="Submit">
 </form>
 <?php

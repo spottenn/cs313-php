@@ -15,23 +15,30 @@ $book = htmlspecialchars($_POST['book']);
 $chapter = htmlspecialchars($_POST['chapter']);
 $verse = htmlspecialchars($_POST['verse']);
 $content = htmlspecialchars($_POST['content']);
-$dbTopics = getTopics($db);
 $topicIds = Array();
+$dbTopics = getTopics($db);
 foreach ($dbTopics as $row) {
     $id = $row['id'];
     $dbTopic = $row['name'];
     if (isset($_POST[$dbTopic])) {
-        $id = htmlspecialchars($_POST[$dbTopic]);
+//        $id = htmlspecialchars($_POST[$dbTopic]);
         $topicIds[] = $id;
     }
 }
-print_r($topicIds);
-var_dump($topicIds);
-echo "<br><br>dbTopics";
-var_dump($dbTopics);
+if (isset($_POST['new-topic']) && isset($_POST['new-topic-name'])) {
+    $sqlString = "INSERT INTO topics VALUES (:name)";
+    $parameters = array(":name", htmlspecialchars($_POST['new-topic-name']));
+    insertSqlStatement($db, $sqlString, $parameters);
+    $topicIds[] =$db->lastInsertId('topics_id_seq');
+}
 
-echo "<br><br>";
-var_dump($_POST);
+//print_r($topicIds);
+//var_dump($topicIds);
+//echo "<br><br>dbTopics";
+//var_dump($dbTopics);
+//
+//echo "<br><br>";
+//var_dump($_POST);
 
 $sqlString = "INSERT INTO Scriptures (book, chapter, verse, content) VALUES (:book, :chapter, :verse, :content)";
 $parameters = array(":book" => $book, ":chapter" => $chapter, ":verse" => $verse, ":content" => $content);

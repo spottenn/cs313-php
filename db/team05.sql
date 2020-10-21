@@ -47,3 +47,6 @@ INSERT INTO topics (name)
 VALUES ('Faith'), ('Hope'), ('Charity');
 
 SElECT t.name FROM Scriptures as s JOIN scripture_topics as st on s.id = st.scriptureId JOIN topics as t on st.topicsId = t.id;
+SElECT st.id FROM Scriptures as s JOIN scripture_topics as st on s.id = st.scriptureId;
+
+SELECT * from topics;
