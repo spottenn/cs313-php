@@ -7,7 +7,7 @@
 <body>
 <h1>Scripture Resources</h1>
 <?php
-include "connect-db.php";
+include "./financial-projector/connect-db.php";
 
 foreach ($db->query('SELECT * FROM Scriptures') as $row)
 {
