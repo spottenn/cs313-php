@@ -8,6 +8,8 @@ insertSrcipture($db);
     <meta charset="UTF-8">
     <title>Team 06</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>-->
+
 </head>
 <body>
 <h1>Insert Scripture</h1>
@@ -37,12 +39,12 @@ insertSrcipture($db);
     //     console.log(got)
     //     return false;
     // });
-    $('#insert-form').submit(function() {
-        $(this).ajaxSubmit(function () {
-            console.log("got here");
-            $('#scrip-list').load('scriptureList');
-        });
-        return false;
+    $('#insert-form').on('submit', function(e) {
+        e.preventDefault(); // prevent native submit
+        $.post("team06InsertScrip.php", $('#insert-form').serialize(), function (data) {
+            $('#scrip-list').load('scriptureList.php');
+        })
+
     });
 </script>
 </body>
