@@ -32,8 +32,17 @@ insertSrcipture($db);
 <h1>Scripture List</h1>
 <div id="scrip-list"><?php include "scriptureList.php"; ?></div>
 <script>
-    $("#insert-form").ajaxForm(function () {
-        $('#scrip-list').load('scriptureList');
+    // $("#insert-form").ajaxForm(function () {
+    //     $('#scrip-list').load('scriptureList');
+    //     console.log(got)
+    //     return false;
+    // });
+    $('#myFormId').submit(function() {
+        $(this).ajaxSubmit(function () {
+            $('#scrip-list').load('scriptureList');
+            console.log(gothere)
+            return false;
+        });
         return false;
     });
 </script>
