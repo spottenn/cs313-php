@@ -2,7 +2,7 @@
     font-family:monospace;
     color: #d6fff6;
 }
-input, .button {
+input, .input-field, .button {
     /*border-color:none;*/
     border:2px solid #4dccbd;
     border-radius:4px;
@@ -15,8 +15,10 @@ form {
 p, form {
     font-size:18px;
 }
-#primary-div {
+#primary-div, .small-div, #secondary-div {
     margin:auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     width:300px;
     background-color:#174c6b;
     padding: 20px;
@@ -24,13 +26,18 @@ p, form {
     border-radius: 20px;
 
 }
-#username, #term, #amount, #projection-name  {
+
+#secondary-div {
+    width: 90%;
+    max-width: 1200px;
+}
+#username, #term, #projection-name, .input-field, .wide-input-field  {
     text-align:right;
-    width: 300px;
     background-color:#231561;
 
 }
-.input-field {
+.wide-input-field {
+    width: 300px;
 
 }
 .feedback, h2, #payment-title {
@@ -40,7 +47,7 @@ p, form {
     font-size: 14px;
     text-align:right;
 }
-#create-projection, #sign-in, .button {
+#create-projection, #sign-in, .button, input[type=submit] {
     background-color:#231561;
     font-size:18px;
 }

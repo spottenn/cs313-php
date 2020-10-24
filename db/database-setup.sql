@@ -1,7 +1,7 @@
 CREATE TABLE users
 (
     id       SERIAL       NOT NULL PRIMARY KEY,
-    username VARCHAR(100) NOT NULL UNIQUE,
+    username VARCHAR(100) NOT NULL UNIQUE CHECK (username <> ''),
     created  timestamp    NOT NULL,
     edited  timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

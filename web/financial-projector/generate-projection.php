@@ -36,8 +36,9 @@ function generateProjection($db, $projectionId)
                 continue;
             }
             $projEntryLines[] = array(
-                'name' => $entry['name'],
                 'date' => $entryWorkingDate->getTimestamp(),
+                'name' => $entry['name'],
+                'type' => $entry['entry_type'],
                 'amount_cents' => $entrySignedCents
             );
             continue;
@@ -45,8 +46,9 @@ function generateProjection($db, $projectionId)
         moveUpEntryDate($entryWorkingDate, $projStartDate, $relativeDateString);
         while ($entryWorkingDate < $entryEndDate) {
             $projEntryLines[] = array(
-                'name' => $entry['name'],
                 'date' => $entryWorkingDate->getTimestamp(),
+                'name' => $entry['name'],
+                'type' => $entry['entry_type'],
                 'amount_cents' => $entrySignedCents
             );
             $entryWorkingDate->modify($relativeDateString);
@@ -58,8 +60,9 @@ function generateProjection($db, $projectionId)
     foreach ($projBankAccounts as $account) {
         $totalCents += $account['amount_cents'];
         $projLines[] = array(
-            'name' => $account['name'],
             'date' => $projStartDate->getTimestamp(),
+            'name' => $account['name'],
+            'type' => $account['type'],
             'amount_cents' => $account['amount_cents'],
             'total_cents' => $totalCents
         );
@@ -90,6 +93,7 @@ function getEntryInterval($entry)
         try {
             return new DateInterval('P' . $entry['repeats_frequency'] . $periodDesignator);
         } catch (Exception $e) {
+            return null;
         }
     }
 }

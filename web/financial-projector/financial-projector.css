@@ -2,6 +2,42 @@
     font-size: 10px;
 }
 
-.dollars {
+.currency {
     text-align:right;
+}
+
+table, tr, th, td {
+    border:1px solid #4dccbd;
+    border-collapse:collapse;
+}
+
+table {
+    width: 100%;
+    margin:auto;
+}
+th {
+    padding:8px;
+}
+td {
+    padding:4px;
+}
+body {
+    background-color: #231651;
+}
+
+h2 {
+    color:#ff8484;
+}
+
+.small-button {
+    font-size: 1em;
+    margin: 0px;
+}
+
+.ui-datepicker * {
+    color: black;
+}
+
+.ui-datepicker tr, .ui-datepicker table {
+    border: 0;
 }

@@ -1,10 +1,20 @@
 <?php
 session_start();
+unset($_SESSION['projectionId']);
+unset($_SESSION['projectionName']);
 require_once 'connect-db.php';
 require_once 'db-helper.php';
 
 if (isset($_POST['username'])) {
-    $_SESSION['username'] = htmlspecialchars($_POST['username']);
+    $username = htmlspecialchars($_POST['username']);
+    if ($username == '') {
+        header("Location: sign-out.php");
+        die;
+    }
+    if (getUserId($db, $username) == null) {
+        createUser($db, $username);
+    }
+    $_SESSION['username'] = $username;
     $projections = getProjectionsForOne($db, $_SESSION['username']);
 }
 ?>
@@ -23,23 +33,31 @@ if (isset($_POST['username'])) {
     <?php
     if (!isset($_SESSION["username"])) {
         echo "<p>Error: You've been logged out.</p> <a class='button' href='financial-projector.php'>Log back In</a>";
-    }
-    else foreach ($projections as $projection) {
-        $queryArray = Array ("username" => $_SESSION["username"], 'projection-name' => $projection['name']);
-        echo "<p><a class='button' href='edit-projection.php?";
-        echo http_build_query($queryArray);
-        echo "'>";
-        echo $projection['name'];
-        echo '</a></p>';
+    } else if (count($projections) == 0) {
+        echo "<p>No projections yet. Enter a title and click create to get started.</p>";
+    } else {
+        echo "<form method='post' action='edit-projection.php'>";
+        foreach ($projections as $projection) {
+//            $queryArray = Array("username" => $_SESSION["username"], 'projection-name' => $projection['name']);
+//            echo "<p><a class='button' href='edit-projection.php?";
+//            echo http_build_query($queryArray);
+//            echo "'>";
+//            echo $projection['name'];
+//            echo '</a></p>';
+            echo '<button class="button wide-input-field input-field" type="submit" name="projection-id" value="';
+            echo $projection['id'];
+            echo '">' . htmlspecialchars($projection['name']) . '</button>';
+        }
+        echo "</form>";
     }
     ?>
     <br/><br/>
-    <form action="create-projection.php" method="post"> <!--onsubmit="return validateAll()"-->
-        New Projection<br>
-        <input id="projection-name" class="input-field" type="text" name="projection"><!--oninput="validateName()"-->
+    <h2>New Projection</h2><br>
+    <form action="edit-projection.php" method="post"> <!--onsubmit="return validateAll()"-->
+        <input id="projection-name" class="wide-input-field" type="text" name="create-projection-name"><!--oninput="validateName()"-->
 <!--        <p id="name-feedback" class="feedback"></p><br>-->
 <!--        <p></p>-->
-        <input id="create-projection" type="submit" value="Create">
+        <input id="create-projection" type="submit" name="create" value="Create">
     </form>
 </div>
 <!--<script>-->
