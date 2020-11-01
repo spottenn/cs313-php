@@ -62,40 +62,7 @@ $bankAccounts = getBankAccountsForOne($db, $projectionId);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-    <script>
-        let entries = <?php echo json_encode($entries);?>;
-        let bankAccounts = <?php echo json_encode($bankAccounts);?>;
-        $(function () {
-            $(".date-input").datepicker();
-            $(".date-input").datepicker("setDate", "today");
-
-        });
-
-        function resetHiddens() {
-            $('#repeats-span').hide();
-            $('#ends-span').hide();
-            $('#income-or-expense-div').hide();
-        }
-
-        function hideCorrectDivs() {
-            let type = $('#type').val()
-            if (type === 'expense' || type === 'income') {
-                $('#income-or-expense-div').show();
-            } else {
-                $('#income-or-expense-div').hide();
-            }
-            if ($('#repeats-checkbox:checked').length == 1) {
-                $('#repeats-span').show();
-            } else {
-                $('#repeats-span').hide();
-            }
-            if ($('#ends-checkbox:checked').length == 1) {
-                $('#ends-span').show();
-            } else {
-                $('#ends-span').hide();
-            }
-        }
-    </script>
+    <script src="edit-projection.js"></script>
 </head>
 <body>
 <div id="primary-div">
@@ -106,6 +73,7 @@ $bankAccounts = getBankAccountsForOne($db, $projectionId);
 <div class="small-div">
     <h1>Create/Edit Entry</h1>
     <form id="create-edit-entry" action="insert-or-edit-entry.php" method="post">
+        <input id="hidden-form-entry-id" type="hidden">
         Title<br><input id="name" class="wide-input-field" type="text" name="name"><br>
 
         <label for="type">Type</label>
@@ -145,7 +113,8 @@ $bankAccounts = getBankAccountsForOne($db, $projectionId);
         <label for="amount">Amount $</label>
         <input id="amount" class="input-field" type="text" name="amount">
         <p id="amount-feedback" class="feedback"></p><br>
-        <input id="create-edit" type="submit" class='button' value="Create/Edit">
+        <input id="create-edit" type="submit" class='button' value="Create">
+<!--        <input id="create-edit" type="submit" class='button' value="Create/Edit">-->
     </form>
 </div>
 <div id="secondary-div">

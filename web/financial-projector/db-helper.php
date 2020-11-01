@@ -61,7 +61,7 @@ function getEntriesForOne($db, $projectionId)
 //    $projection = htmlspecialchars($_POST['projection-name']);
     try {
         $statement = $db->prepare(
-            "SELECT name, entry_type, amount_cents, start_date, end_date, repeats, repeat_frequency 
+            "SELECT id, name, entry_type, amount_cents, start_date, end_date, repeats, repeat_frequency 
                 FROM proj_entries WHERE projection_id = (SELECT id FROM projections WHERE id = :projection_id)
                 ORDER BY entry_type DESC");
         $statement->bindValue(':projection_id', $projectionId);
@@ -79,7 +79,7 @@ function getBankAccountsForOne($db, $projectionId)
 //    $projection = htmlspecialchars($_POST['projection-name']);
     try {
         $statement = $db->prepare(
-            "SELECT name, type, amount_cents FROM bank_accounts WHERE projection_id = (SELECT id FROM projections WHERE id = :projection_id)");
+            "SELECT id, name, type, amount_cents FROM bank_accounts WHERE projection_id = (SELECT id FROM projections WHERE id = :projection_id)");
         $statement->bindValue(':projection_id', $projectionId);
         $statement->execute();
         $entries = $statement->fetchAll(PDO:: FETCH_ASSOC);
@@ -172,4 +172,17 @@ function getUserId($db, $username)
         return $results[0]['id'];
     }
     return null;
+}
+
+function getEntrySingle ($db, $id, $entryType) {
+    switch ($entryType) {
+        case "bank":
+            $sql = "SELECT id, name, type, amount_cents FROM bank_accounts WHERE id = :id";
+            break;
+        case "entry":
+            $sql = "SELECT name, entry_type, amount_cents, start_date, end_date, repeats, repeat_frequency 
+                FROM proj_entries WHERE id = :id";
+            break;
+    }
+    return getSqlResults($db, $sql, array(":id", $id))[0];
 }
